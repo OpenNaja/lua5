@@ -237,11 +237,11 @@ static void checkHeader (LoadState *S) {
   checkliteral(S, LUA_SIGNATURE + 1, "not a");  /* 1st char already checked */
   if (LoadByte(S) != LUAC_VERSION)
     error(S, "version mismatch in");
-  if (LoadByte(S) != LUAC_FORMAT)
+  if (LoadByte(S) != LUAC_FORMAT) //needs to be format 2
     error(S, "format mismatch in");
   checkliteral(S, LUAC_DATA, "corrupted");
   checksize(S, int);
-  checksize(S, size_t);
+  //checksize(S, size_t); disable size_t 
   checksize(S, Instruction);
   checksize(S, lua_Integer);
   checksize(S, lua_Number);
